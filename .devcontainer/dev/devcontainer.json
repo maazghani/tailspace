@@ -1,0 +1,4 @@
+{
+    "name": "Tailspace Development Container",
+    "image": "ghcr.io/maazghani/tailspace:latest"
+}
