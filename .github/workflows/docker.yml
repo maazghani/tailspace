@@ -66,7 +66,6 @@ jobs:
         with:
           imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           imageTag: 1
-          cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:1
           push: always
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
