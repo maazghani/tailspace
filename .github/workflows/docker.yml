@@ -67,7 +67,8 @@ jobs:
         id: build-and-push
         uses: devcontainers/ci@v0.3
         with:
-          imageName: ghcr.io/maazghani/tailspace:1
+          imageName: ghcr.io/maazghani/tailspace
+          imageTag: 1
           cacheFrom: ghcr.io/maazghani/tailspace:1
           push: always
         env:
