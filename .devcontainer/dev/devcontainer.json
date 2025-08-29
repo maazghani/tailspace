@@ -1,4 +1,5 @@
 {
     "name": "Tailspace Development Container",
-    "image": "ghcr.io/maazghani/tailspace:latest"
+    "image": "ghcr.io/maazghani/tailspace:latest",
+    "postCreateCommand": "sudo tailscale up --auth-key $TS_AUTH_KEY"
 }
