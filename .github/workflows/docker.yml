@@ -64,9 +64,9 @@ jobs:
         id: build-and-push
         uses: devcontainers/ci@v0.3
         with:
-          imageName: ghcr.io/maazghani/tailspace
+          imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           imageTag: 1
-          cacheFrom: ghcr.io/maazghani/tailspace:1
+          cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:1
           push: always
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
