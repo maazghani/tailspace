@@ -8,5 +8,5 @@
 		}
 	},
 	"forwardPorts": [22],
-	"postCreateCommand": "echo 'Container setup complete'"
+	"postCreateCommand": "tailscale up --auth-key=$TS_AUTH_KEY --accept-routes"
 }
