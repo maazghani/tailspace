@@ -8,5 +8,5 @@
 		}
 	},
 	"forwardPorts": [22],
-	"postCreateCommand": "tailscale up --auth-key=$TS_AUTH_KEY --accept-routes"
+	"postCreateCommand": "tailscale up --auth-key=${TS_AUTH_KEY:?TS_AUTH_KEY environment variable not set} --accept-routes"
 }
