@@ -1,0 +1,62 @@
+# Starship configuration for dev container
+# Catppuccin Macchiato theme
+
+format = """
+[┌───────────────────>](bold green)
+[│](bold green) $username@$hostname in $directory$git_branch$git_status
+[└─>](bold green) $character """
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+[username]
+show_always = true
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = false
+format = "[$hostname]($style)"
+
+[directory]
+truncation_length = 3
+format = "[$path]($style)"
+
+[git_branch]
+format = "on [$symbol$branch]($style) "
+
+[git_status]
+format = "[\\($all_status$ahead_behind\\)]($style) "
+
+[nodejs]
+detect_files = ["package.json", ".node-version"]
+format = "via [$symbol($version )]($style)"
+symbol = " "
+
+[python]
+detect_files = [".python-version", "Pipfile", "__pycache__", "*.py", "requirements.txt"]
+format = "via [$symbol($version )]($style)"
+symbol = "🐍 "
+
+[docker_context]
+format = "via [$symbol$context]($style) "
+symbol = "🐳 "
+
+[kubernetes]
+format = "via [$symbol$context( \\($namespace\\))]($style) "
+symbol = "☸️  "
+disabled = false
+
+[terraform]
+format = "via [$symbol($version )]($style)"
+symbol = "💠 "
+
+[time]
+disabled = false
+time_format = "%R"
+format = "🕙 [$time]($style)"
+
+[status]
+disabled = false
+format = "[\\[$symbol$status_code\\]]($style)"
+symbol = "✖"

@@ -2,11 +2,37 @@
 	"name": "Dev Container with Tailscale",
 	"image": "mcr.microsoft.com/devcontainers/universal:2",
 	"features": {
-		"ghcr.io/tailscale/codespace/tailscale": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+			"version": "latest",
+			"enableNonRootDocker": true
+		},
 		"ghcr.io/devcontainers/features/sshd:1": {
 			"version": "latest"
 		}
 	},
-	"forwardPorts": [22],
-	"postCreateCommand": "tailscale up --auth-key=${TS_AUTH_KEY:?TS_AUTH_KEY environment variable not set} --accept-routes"
+	"runArgs": ["--privileged"],
+	"forwardPorts": [22, 6443],
+	"remoteUser": "vscode",
+	"postCreateCommand": "bash .devcontainer/devcontainer-setup.sh",
+	"postStartCommand": "bash -c 'if ! kind get clusters 2>/dev/null | grep -q \"^dev$\"; then echo \"[container-startup] Creating Kind cluster dev...\"; kind create cluster --name dev --wait 5m; else echo \"[container-startup] Kind cluster dev already exists\"; fi'",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.Go",
+				"ms-python.python",
+				"ms-vscode.makefile-tools",
+				"eamodio.gitlens",
+				"catppuccin.catppuccin-vsc"
+			],
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash",
+				"terminal.integrated.profiles.linux": {
+					"bash": {
+						"path": "/bin/bash",
+						"icon": "terminal-bash"
+					}
+				}
+			}
+		}
+	}
 }
